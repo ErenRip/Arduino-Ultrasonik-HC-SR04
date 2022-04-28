@@ -4,22 +4,26 @@
 
 LiquidCrystal_I2C lcdekranim(0x27,16,2);
 
-void setup() 
-{
-  lcdekranim.init();
-  lcdekranim.backlight();
-  lcdekranim.setCursor(0,0);
-  lcdekranim.print("Giris Ekrani");
-  delay(1000);
-  lcdekranim.clear();
-  pinMode(6,OUTPUT);//Trig
-  pinMode(7,INPUT); //Echo
-  pinMode(4,OUTPUT);  
-  Serial.begin(9600);
+void setup() {
+
+pinMode(4,OUTPUT);  
+Serial.begin(9600);
+
+lcdekranim.init();
+lcdekranim.backlight();
+lcdekranim.setCursor(0,0);
+lcdekranim.print("Giris Ekrani");
+delay(1000);
+
+pinMode(6,OUTPUT);//Trig
+pinMode(7,INPUT); //Echo
+
+
 }
 
-void loop()
-{
+void loop() {
+
+  
 digitalWrite(6,1); delay(1);
 digitalWrite(6,0);
 int sure=pulseIn(7,1);
@@ -29,8 +33,6 @@ Serial.println(mesafe);
 delay(1);
 
 
-lcdekranim.print(mesafe);
-  delay(0120);
   lcdekranim.clear();
 if(mesafe<25)
 {
@@ -52,5 +54,6 @@ else
 {
   digitalWrite(4,0);
   } 
+
 
 }
