@@ -9,7 +9,7 @@ void setup()
   lcdekranim.init();
   lcdekranim.backlight();
   lcdekranim.setCursor(0,0);
-  lcdekranim.print("Giris Ekrani");
+  lcdekranim.print("|-LOGIN-|");
   delay(1000);
   lcdekranim.clear();
   pinMode(6,OUTPUT);//Trig
@@ -28,29 +28,36 @@ Serial.print("Olculen Mesafe=");
 Serial.println(mesafe);
 delay(1);
 
-
+lcdekranim.setCursor(0,0);
+lcdekranim.print("|-olcum-|");
+lcdekranim.setCursor(3,1);
 lcdekranim.print(mesafe);
   delay(0120);
   lcdekranim.clear();
-if(mesafe<25)
+if(mesafe<=25)
 {
   digitalWrite(4,1);
   }
-if(mesafe<=50)
+else if(mesafe<=50)
 {
   digitalWrite(4,1);
-  delay(0020);
+  delay(0050);
   digitalWrite(4,0);
-  delay(0020);
+  delay(0050);
   digitalWrite(4,1);
-  delay(0020);
+  delay(0050);
   digitalWrite(4,0);
   
  }
 
+else if(mesafe >51)
+{
+  digitalWrite(4,0);
+  } 
 else
 {
   digitalWrite(4,0);
   } 
+
 
 }
